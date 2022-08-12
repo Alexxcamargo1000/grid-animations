@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-heading: "Staatliches", cursive;
+  --ff-body: "Roboto", sans-serif;
+
+  --fs-heading: clamp(4rem, 1rem + 3vw, 4.8rem);
+  --fs-body: 2rem;
+
+  --color-primary: #8e9aaf;
+  --color-primary-dark: #5c6981;
+
+  --color-secondary: #feeafa;
+  --color-secondary-dark: #cbc0d3;
+
+  --color-bg: #eff1ff;
+  --color-tx-heading: #ffffff;
+
+  --color-bg-h2: #feeafa;
+  --color-h2: #4a4e69;
+}
+
+h1,
+h2 {
+  font-family: var(--ff-heading);
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--ff-body);
+  background-color: var(--color-bg);
+}
+
+body::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  height: 27rem;
+  background-color: var(--color-primary);
+}
+
+header {
+  text-align: center;
+}
+
+header img {
+  margin-top: 3.2rem;
+}
+
+header h1 {
+  margin-top: 2rem;
+  background-color: var(--color-secondary-dark);
+  font-weight: 400;
+  font-size: var(--fs-heading);
+  line-height: 3.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  color: var(--color-tx-heading);
+
+  height: 4.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+p {
+  line-height: 2.4rem;
+  font-size: var(--fs-body);
+  text-align: center;
+
+  font-weight: normal;
+  color: #23053a;
+
+  max-width: 70rem;
+  margin: 5rem auto 6.3rem;
+  padding: 2rem;
+}
+
+main {
+  padding: 0 3.2rem 4rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+
+  gap: 3.2rem;
+}
+
+.grid .card:nth-child(odd) img {
+  height: 25rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 60rem;
+
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  max-height: 45rem;
+  object-fit: cover;
+  border-radius: 2rem;
+
+  animation: downtotop 1000ms;
+  transition: all 0.2s;
+}
+
+.card:hover img {
+  transform: scale(0.98);
+}
+
+.card h2 {
+  position: absolute;
+  top: 1.7rem;
+  right: 3.9rem;
+  color: var(--color-h2);
+  background-color: var(--color-bg-h2);
+
+  width: 11.2rem;
+  border-radius: 2rem;
+
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 3.4rem;
+  letter-spacing: 0.05em;
+
+  animation: toptodown 1000ms;
+}
+
+footer {
+  display: none;
+}
+
+@keyframes downtotop {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes toptodown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 750px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid .card:nth-child(odd) img {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  #page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  body::before {
+    background-color: var(--color-bg);
+  }
+  .wrapperHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 37.7rem;
+    min-height: 72rem;
+    background-color: var(--color-primary);
+  }
+
+  .wrapperHeader p {
+    font-size: 1.8rem;
+    text-align: justify;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    padding: 3.2rem;
+  }
+
+  header h1 {
+    height: 7rem;
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: calc(100% - 37.7rem);
+    padding: 6.4rem;
+  }
+
+  .grid {
+    grid-template-areas:
+      "A B C"
+      "D B F"
+      "D E F";
+  }
+  .grid .card img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid .card:nth-child(odd) img {
+    height: 15rem;
+  }
+
+  .col-a {
+    grid-area: A;
+  }
+  .col-b {
+    grid-area: B;
+  }
+  .col-c {
+    grid-area: C;
+  }
+  .col-d {
+    grid-area: D;
+  }
+  .col-e {
+    grid-area: E;
+  }
+  .col-f {
+    grid-area: F;
+  }
+
+  .card h2 {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(100% - 37.7rem);
+  }
+  footer p {
+    margin: 0;
+    color: #4a4e69;
+  }
+  footer a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
